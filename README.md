@@ -46,19 +46,33 @@ Designed as a portfolio-quality frontend project, CALYX demonstrates responsive 
 
 ## Home
 
-> *(Add hero screenshot here)*
+<p align="center">
+  <img src="assets/screenshots/hero.png" width="900">
+</p>
+
+---
 
 ## Scientific Mode
 
-> *(Add screenshot here)*
+<p align="center">
+  <img src="assets/screenshots/scientific.png" width="900">
+</p>
+
+---
 
 ## Graph Mode
 
-> *(Add screenshot here)*
+<p align="center">
+  <img src="assets/screenshots/graph.png" width="900">
+</p>
+
+---
 
 ## Mobile View
 
-> *(Add screenshot here)*
+<p align="center">
+  <img src="assets/screenshots/mobile.png" width="350">
+</p>
 
 ---
 
