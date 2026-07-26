@@ -1,13 +1,156 @@
-# CALYX – Precision. Simplified.
+<div align="center">
 
-An Apple VisionOS-inspired spatial glassmorphism desktop productivity calculator web application.
+# 🧮 CALYX
 
-## Key Features
+### *Designed for the Future.*
 
-- **Spatial Glassmorphism Optics**: Multi-layer frosted glass physics with 48px blur, asymmetric directional specular edge lighting, and 3-tier depth shadows.
-- **Damped 3D Mouse Parallax**: Subtle 2.5° spatial tilt perspective with dynamic cursor spotlight tracking.
-- **7 Productivity Modes**: Basic Calculator, Scientific Mode, HTML5 Canvas Graphing Mode, Unit Converter, Currency Exchange (FX), AI Math Assistant, and Calculations History Log.
-- **Voice Recognition (Web Speech API)**: Converts spoken math expressions into calculations.
-- **Raycast-Style Command Palette (`Ctrl + K`)**: Quick glass overlay search for modes, themes, and actions.
-- **6 Theme Presets & 6 Accent Colors**: Instant switching between Midnight Glass, Aurora, Ocean Blue, Frost White, Sunset, and AMOLED Black with custom accent colors.
-- **Export & PWA**: Export history to `.txt`, `.csv`, or `.pdf` print layouts. Includes Service Worker (`sw.js`) for full offline access.
+A premium VisionOS-inspired scientific calculator built with **HTML, CSS, and JavaScript**, featuring a modern glassmorphism interface, responsive design, and advanced productivity tools.
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-orange?style=for-the-badge)](https://calyx-ten.vercel.app/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
+[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]()
+
+🌐 **Live Demo:** https://calyx-ten.vercel.app/
+
+</div>
+
+---
+
+# ✨ Overview
+
+CALYX is a premium web-based calculator inspired by Apple's VisionOS design language. It combines elegant glassmorphism, smooth animations, and advanced calculation tools into a clean and modern interface.
+
+Designed as a portfolio-quality frontend project, CALYX demonstrates responsive UI design, modern CSS techniques, and interactive JavaScript functionality.
+
+---
+
+# 🚀 Features
+
+- ✨ VisionOS-inspired Glassmorphism UI
+- 🧮 Basic Calculator
+- 📐 Scientific Calculator
+- 📈 Interactive Graph Mode
+- 📏 Unit Converter
+- 💱 Currency Converter
+- 🤖 AI Math Assistant
+- 📝 Calculation History
+- 🎨 Multiple Themes
+- 🎙️ Voice Input
+- ⌨️ Keyboard Shortcuts
+- ⚡ Smooth Animations
+- 📱 Responsive Design
+- 🌙 Dark Theme
+- 🖥️ Desktop-like Experience
+
+---
+
+# 🖼️ Screenshots
+
+## Home
+
+> *(Add hero screenshot here)*
+
+## Scientific Mode
+
+> *(Add screenshot here)*
+
+## Graph Mode
+
+> *(Add screenshot here)*
+
+## Mobile View
+
+> *(Add screenshot here)*
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Structure |
+| CSS3 | Styling & Glassmorphism |
+| JavaScript (ES6) | Functionality |
+| Vercel | Deployment |
+| Git & GitHub | Version Control |
+
+---
+
+# 📂 Project Structure
+
+```text
+CALYX
+│
+├── index.html
+├── style.css
+├── script.js
+├── manifest.json
+├── assets/
+│   ├── screenshots/
+│   └── icons/
+└── README.md
+```
+
+---
+
+# 🚀 Running Locally
+
+Clone the repository
+
+```bash
+git clone https://github.com/Aadya1210/Calyx--Calculator.git
+```
+
+Go into the project
+
+```bash
+cd Calyx--Calculator
+```
+
+Run using Live Server or any static server.
+
+---
+
+# 🌍 Live Website
+
+👉 https://calyx-ten.vercel.app/
+
+---
+
+# 🎯 Future Improvements
+
+- Offline PWA Support
+- Better AI Assistant
+- Financial Calculator
+- Statistics Mode
+- Matrix Calculator
+- Equation Solver
+- Programmer Mode
+- Unit Tests
+- Localization
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👩‍💻 Author
+
+**AADYA SRIVASTAVA**
+
+GitHub: https://github.com/Aadya1210
+
+---
+
+<div align="center">
+
+### ⭐ If you enjoyed this project, consider giving it a star!
+
+Made with ❤️ by **AADYA SRIVASTAVA**
+
+</div>
