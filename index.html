@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphic Advanced Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="bg-orb orb-4"></div>
+
+  <!-- Calculator Application Container -->
+  <div class="calculator-app" id="app">
+    <div class="glass-container">
+
+      <!-- Header & Quick Controls -->
+      <div class="header">
+        <div class="app-title">
+          <div class="logo-badge"></div>
+          <span>ADV Glass Calculator</span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" id="copyBtn" title="Copy Result" onclick="copyResult()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+          <button class="icon-btn" id="themeBtn" title="Toggle Theme" onclick="toggleTheme()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segment Control Mode Navigation -->
+      <div class="modes-tab-bar">
+        <button class="tab-btn active" onclick="switchMode('basic')" id="tab-basic">Basic</button>
+        <button class="tab-btn" onclick="switchMode('scientific')" id="tab-scientific">Scientific</button>
+        <button class="tab-btn" onclick="switchMode('converter')" id="tab-converter">Convert</button>
+        <button class="tab-btn" onclick="switchMode('history')" id="tab-history">History</button>
+      </div>
+
+      <!-- Glass Screen Display -->
+      <div class="display-container" id="displayArea">
+        <div class="display-meta">
+          <span class="angle-badge" id="angleMode" onclick="toggleAngleMode()" title="Toggle DEG/RAD">DEG</span>
+          <span class="history-text" id="prevExpression"></span>
+        </div>
+        <input type="text" id="display" class="main-input" value="0" readonly placeholder="0">
+        <div class="live-preview" id="livePreview"></div>
+      </div>
+
+      <!-- BASIC CALCULATOR GRID -->
+      <div class="buttons-grid" id="basicMode">
+        <button class="btn btn-clear" onclick="clearDisplay()">C</button>
+        <button class="btn btn-func" onclick="backspace()" title="Backspace">⌫</button>
+        <button class="btn btn-func" onclick="press('%')">%</button>
+        <button class="btn btn-operator" onclick="press('/')">÷</button>
+
+        <button class="btn" onclick="press('7')">7</button>
+        <button class="btn" onclick="press('8')">8</button>
+        <button class="btn" onclick="press('9')">9</button>
+        <button class="btn btn-operator" onclick="press('*')">×</button>
+
+        <button class="btn" onclick="press('4')">4</button>
+        <button class="btn" onclick="press('5')">5</button>
+        <button class="btn" onclick="press('6')">6</button>
+        <button class="btn btn-operator" onclick="press('-')">−</button>
+
+        <button class="btn" onclick="press('1')">1</button>
+        <button class="btn" onclick="press('2')">2</button>
+        <button class="btn" onclick="press('3')">3</button>
+        <button class="btn btn-operator" onclick="press('+')">+</button>
+
+        <button class="btn btn-span-2" onclick="press('0')">0</button>
+        <button class="btn" onclick="press('.')">.</button>
+        <button class="btn btn-equals" onclick="calculate()">=</button>
+      </div>
+
+      <!-- SCIENTIFIC CALCULATOR GRID -->
+      <div class="buttons-grid scientific-grid hidden" id="scientificMode">
+        <button class="btn btn-func" onclick="press('sin(')">sin</button>
+        <button class="btn btn-func" onclick="press('cos(')">cos</button>
+        <button class="btn btn-func" onclick="press('tan(')">tan</button>
+        <button class="btn btn-func" onclick="press('sqrt(')">√</button>
+        <button class="btn btn-clear" onclick="clearDisplay()">C</button>
+
+        <button class="btn btn-func" onclick="press('π')">π</button>
+        <button class="btn btn-func" onclick="press('e')">e</button>
+        <button class="btn btn-func" onclick="press('^2')">x²</button>
+        <button class="btn btn-func" onclick="press('^')">xⁿ</button>
+        <button class="btn btn-func" onclick="backspace()">⌫</button>
+
+        <button class="btn btn-func" onclick="press('log(')">log</button>
+        <button class="btn btn-func" onclick="press('ln(')">ln</button>
+        <button class="btn btn-func" onclick="press('(')">(</button>
+        <button class="btn btn-func" onclick="press(')')">)</button>
+        <button class="btn btn-operator" onclick="press('/')">÷</button>
+
+        <button class="btn" onclick="press('7')">7</button>
+        <button class="btn" onclick="press('8')">8</button>
+        <button class="btn" onclick="press('9')">9</button>
+        <button class="btn btn-func" onclick="press('%')">%</button>
+        <button class="btn btn-operator" onclick="press('*')">×</button>
+
+        <button class="btn" onclick="press('4')">4</button>
+        <button class="btn" onclick="press('5')">5</button>
+        <button class="btn" onclick="press('6')">6</button>
+        <button class="btn btn-span-2 btn-operator" onclick="press('-')">−</button>
+
+        <button class="btn" onclick="press('1')">1</button>
+        <button class="btn" onclick="press('2')">2</button>
+        <button class="btn" onclick="press('3')">3</button>
+        <button class="btn btn-span-2 btn-operator" onclick="press('+')">+</button>
+
+        <button class="btn btn-span-2" onclick="press('0')">0</button>
+        <button class="btn" onclick="press('.')">.</button>
+        <button class="btn btn-span-2 btn-equals" onclick="calculate()">=</button>
+      </div>
+
+      <!-- UNIT CONVERTER PANEL -->
+      <div class="converter-panel hidden" id="converterMode">
+        <div class="glass-field-group">
+          <label class="field-label">Category</label>
+          <select class="glass-select" id="convertCategory" onchange="updateConverterUnits()">
+            <option value="length">Length</option>
+            <option value="mass">Mass / Weight</option>
+            <option value="temperature">Temperature</option>
+            <option value="volume">Volume</option>
+          </select>
+        </div>
+
+        <div class="glass-field-group">
+          <label class="field-label">Enter Value</label>
+          <input type="number" class="glass-input" id="convertInput" value="1" placeholder="Enter number..." oninput="performConversion()">
+        </div>
+
+        <div class="converter-row">
+          <div class="glass-field-group">
+            <label class="field-label">From</label>
+            <select class="glass-select" id="convertFrom" onchange="performConversion()"></select>
+          </div>
+          <div class="glass-field-group">
+            <label class="field-label">To</label>
+            <select class="glass-select" id="convertTo" onchange="performConversion()"></select>
+          </div>
+        </div>
+
+        <div class="converter-result-card">
+          <div class="field-label">Converted Result</div>
+          <div class="converter-result-value" id="converterOutput">0</div>
+        </div>
+      </div>
+
+      <!-- CALCULATION HISTORY PANEL -->
+      <div class="history-panel hidden" id="historyMode">
+        <div class="history-header">
+          <span class="field-label">Recent Calculations</span>
+          <button class="icon-btn" onclick="clearHistory()" title="Clear History" style="width: auto; padding: 0 10px; font-size: 0.8rem;">
+            Clear
+          </button>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="empty-history">No history yet</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Feedback Banner -->
+  <div class="glass-toast" id="toast">Copied to clipboard!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
