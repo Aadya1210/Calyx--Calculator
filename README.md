@@ -6,11 +6,7 @@
 
 A premium VisionOS-inspired scientific calculator built with **HTML, CSS, and JavaScript**, featuring a modern glassmorphism interface, responsive design, and advanced productivity tools.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-orange?style=for-the-badge)](https://calyx-ten.vercel.app/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)]()
-[![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)]()
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]()
+
 
 🌐 **Live Demo:** https://calyx-ten.vercel.app/
 
