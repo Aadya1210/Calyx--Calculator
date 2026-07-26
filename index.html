@@ -3,36 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glassmorphic Advanced Calculator</title>
+  <title>CALYX – Precision. Simplified.</title>
+  <meta name="description" content="CALYX – Precision. Simplified. Portfolio-quality spatial glassmorphic calculator application.">
+  <meta property="og:title" content="CALYX – Precision. Simplified.">
+  <meta property="og:description" content="CALYX – Precision. Simplified. Premium spatial glassmorphic calculator application.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#070a12">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Ambient Glowing Background Orbs -->
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
-  <div class="bg-orb orb-4"></div>
+  <!-- macOS Wallpaper Ambient Glowing Blobs -->
+  <div class="ambient-container">
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+    <div class="ambient-blob blob-3"></div>
+    <div class="ambient-blob blob-4"></div>
+  </div>
 
   <!-- Calculator Application Container -->
   <div class="calculator-app" id="app">
-    <div class="glass-container">
+    <div class="glass-card" id="glassCard">
 
-      <!-- Header & Quick Controls -->
+      <!-- Idle Glass Glare Shimmer Layer -->
+      <div class="glass-shimmer"></div>
+
+      <!-- CALYX Header & Actions -->
       <div class="header">
         <div class="app-title">
           <div class="logo-badge"></div>
-          <span>ADV Glass Calculator</span>
+          <div class="title-group">
+            <span class="main-title">CALYX</span>
+            <span class="sub-title">Precision. Simplified.</span>
+          </div>
         </div>
         <div class="top-actions">
+          <!-- Copy Result Button -->
           <button class="icon-btn" id="copyBtn" title="Copy Result" onclick="copyResult()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           </button>
-          <button class="icon-btn" id="themeBtn" title="Toggle Theme" onclick="toggleTheme()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- Download Result / Install App Button -->
+          <button class="icon-btn" id="downloadBtn" title="Download Result / Install App" onclick="handleDownloadAction()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
+
+          <!-- Voice Input Button -->
+          <button class="icon-btn" id="voiceBtn" title="Voice Input" onclick="toggleVoiceInput()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
+          
+          <!-- Theme Picker Dropdown -->
+          <button class="icon-btn" id="themeSelectBtn" title="Switch Theme" onclick="cycleTheme()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -44,28 +79,73 @@
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
           </button>
+
+          <!-- Accent Color Selector -->
+          <button class="icon-btn" id="accentBtn" title="Change Accent Color" onclick="cycleAccent()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+              <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+              <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.92 0 1.5-.72 1.5-1.5 0-.42-.16-.8-.42-1.08-.27-.29-.44-.68-.44-1.12 0-.92.73-1.65 1.65-1.65H16c3.31 0 6-2.69 6-6 0-4.97-4.48-9-10-9z"></path>
+            </svg>
+          </button>
+
+          <!-- Command Palette Trigger (Ctrl+K) -->
+          <button class="icon-btn" id="paletteBtn" title="Command Palette (Ctrl+K)" onclick="toggleCommandPalette()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <!-- Settings Button -->
+          <button class="icon-btn" id="settingsBtn" title="Settings" onclick="switchMode('settings')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Segment Control Mode Navigation -->
-      <div class="modes-tab-bar">
+      <!-- Segment Control Mode Navigation (7 Modes) -->
+      <div class="modes-tab-bar" id="tabBar">
+        <div class="tab-pill" id="tabPill"></div>
         <button class="tab-btn active" onclick="switchMode('basic')" id="tab-basic">Basic</button>
-        <button class="tab-btn" onclick="switchMode('scientific')" id="tab-scientific">Scientific</button>
-        <button class="tab-btn" onclick="switchMode('converter')" id="tab-converter">Convert</button>
-        <button class="tab-btn" onclick="switchMode('history')" id="tab-history">History</button>
+        <button class="tab-btn" onclick="switchMode('scientific')" id="tab-scientific">Sci</button>
+        <button class="tab-btn" onclick="switchMode('graph')" id="tab-graph">Graph</button>
+        <button class="tab-btn" onclick="switchMode('converter')" id="tab-converter">Units</button>
+        <button class="tab-btn" onclick="switchMode('currency')" id="tab-currency">FX</button>
+        <button class="tab-btn" onclick="switchMode('ai')" id="tab-ai">AI</button>
+        <button class="tab-btn" onclick="switchMode('history')" id="tab-history">Log</button>
       </div>
 
-      <!-- Glass Screen Display -->
+      <!-- CALYX Display Panel with Memory Status Indicator -->
       <div class="display-container" id="displayArea">
         <div class="display-meta">
-          <span class="angle-badge" id="angleMode" onclick="toggleAngleMode()" title="Toggle DEG/RAD">DEG</span>
+          <div class="meta-badges">
+            <span class="angle-badge" id="angleMode" onclick="toggleAngleMode()" title="Toggle DEG/RAD">DEG</span>
+            <span class="memory-badge hidden" id="memoryBadge" title="Memory Active">M</span>
+          </div>
           <span class="history-text" id="prevExpression"></span>
         </div>
-        <input type="text" id="display" class="main-input" value="0" readonly placeholder="0">
+        <div class="main-input-wrapper">
+          <input type="text" id="display" class="main-input" value="0" readonly placeholder="0">
+          <span class="blinking-cursor"></span>
+        </div>
         <div class="live-preview" id="livePreview"></div>
       </div>
 
-      <!-- BASIC CALCULATOR GRID -->
+      <!-- Memory Controls Row -->
+      <div class="memory-row" id="memoryRow">
+        <button class="btn-mem" onclick="memoryClear()">MC</button>
+        <button class="btn-mem" onclick="memoryRecall()">MR</button>
+        <button class="btn-mem" onclick="memoryAdd()">M+</button>
+        <button class="btn-mem" onclick="memorySubtract()">M-</button>
+      </div>
+
+      <!-- BASIC MODE KEYBOARD GRID -->
       <div class="buttons-grid" id="basicMode">
         <button class="btn btn-clear" onclick="clearDisplay()">C</button>
         <button class="btn btn-func" onclick="backspace()" title="Backspace">⌫</button>
@@ -92,7 +172,7 @@
         <button class="btn btn-equals" onclick="calculate()">=</button>
       </div>
 
-      <!-- SCIENTIFIC CALCULATOR GRID -->
+      <!-- SCIENTIFIC MODE KEYBOARD GRID -->
       <div class="buttons-grid scientific-grid hidden" id="scientificMode">
         <button class="btn btn-func" onclick="press('sin(')">sin</button>
         <button class="btn btn-func" onclick="press('cos(')">cos</button>
@@ -133,6 +213,26 @@
         <button class="btn btn-span-2 btn-equals" onclick="calculate()">=</button>
       </div>
 
+      <!-- GRAPHING CALCULATOR MODE -->
+      <div class="graph-panel hidden" id="graphMode">
+        <div class="graph-controls">
+          <select class="glass-select" id="graphFuncSelect" onchange="renderGraph()">
+            <option value="sin">f(x) = sin(x)</option>
+            <option value="cos">f(x) = cos(x)</option>
+            <option value="tan">f(x) = tan(x)</option>
+            <option value="x2">f(x) = x²</option>
+            <option value="x3">f(x) = x³</option>
+            <option value="poly">f(x) = x³ - 3x</option>
+          </select>
+          <button class="icon-btn" onclick="zoomGraph(1.2)" title="Zoom In">+</button>
+          <button class="icon-btn" onclick="zoomGraph(0.8)" title="Zoom Out">−</button>
+          <button class="icon-btn" onclick="resetGraph()" title="Reset View">↺</button>
+        </div>
+        <div class="canvas-container">
+          <canvas id="graphCanvas"></canvas>
+        </div>
+      </div>
+
       <!-- UNIT CONVERTER PANEL -->
       <div class="converter-panel hidden" id="converterMode">
         <div class="glass-field-group">
@@ -167,23 +267,123 @@
         </div>
       </div>
 
-      <!-- CALCULATION HISTORY PANEL -->
+      <!-- CURRENCY CONVERTER MODE -->
+      <div class="currency-panel hidden" id="currencyMode">
+        <div class="glass-field-group">
+          <label class="field-label">Amount</label>
+          <input type="number" class="glass-input" id="currencyAmount" value="100" placeholder="Amount..." oninput="convertCurrency()">
+        </div>
+
+        <div class="converter-row">
+          <div class="glass-field-group">
+            <label class="field-label">From Currency</label>
+            <select class="glass-select" id="currencyFrom" onchange="convertCurrency()">
+              <option value="USD">🇺🇸 USD - US Dollar</option>
+              <option value="EUR">🇪🇺 EUR - Euro</option>
+              <option value="GBP">🇬🇧 GBP - British Pound</option>
+              <option value="INR" selected>🇮🇳 INR - Indian Rupee</option>
+              <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+              <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+              <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+            </select>
+          </div>
+          <div class="glass-field-group">
+            <label class="field-label">To Currency</label>
+            <select class="glass-select" id="currencyTo" onchange="convertCurrency()">
+              <option value="USD" selected>🇺🇸 USD - US Dollar</option>
+              <option value="EUR">🇪🇺 EUR - Euro</option>
+              <option value="GBP">🇬🇧 GBP - British Pound</option>
+              <option value="INR">🇮🇳 INR - Indian Rupee</option>
+              <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+              <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+              <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="converter-result-card">
+          <div class="field-label">Live Converted Amount</div>
+          <div class="converter-result-value" id="currencyOutput">$0.00</div>
+        </div>
+      </div>
+
+      <!-- AI MATH ASSISTANT MODE -->
+      <div class="ai-panel hidden" id="aiMode">
+        <div class="ai-chips-container">
+          <span class="ai-chip" onclick="askAi('What is 18% of 450?')">18% of 450</span>
+          <span class="ai-chip" onclick="askAi('Split 250 among 7 people')">Split 250 by 7</span>
+          <span class="ai-chip" onclick="askAi('Compound interest on 5000 at 5% for 3 years')">Compound Interest</span>
+        </div>
+
+        <div class="glass-field-group">
+          <input type="text" class="glass-input" id="aiPrompt" placeholder="Ask AI math problem..." onkeydown="if(event.key==='Enter') runAiSolver()">
+        </div>
+
+        <div class="ai-card">
+          <div class="ai-question" id="aiQuestion">Ask a math problem in plain English</div>
+          <div class="ai-answer" id="aiAnswer">Result preview</div>
+          <div class="ai-explanation" id="aiExplanation">Step-by-step calculation breakdown will appear here.</div>
+        </div>
+      </div>
+
+      <!-- HISTORY LOG & EXPORT PANEL -->
       <div class="history-panel hidden" id="historyMode">
         <div class="history-header">
-          <span class="field-label">Recent Calculations</span>
-          <button class="icon-btn" onclick="clearHistory()" title="Clear History" style="width: auto; padding: 0 10px; font-size: 0.8rem;">
-            Clear
-          </button>
+          <span class="field-label">Calculations Log</span>
+          <div class="history-actions">
+            <button class="icon-btn" onclick="exportHistory('txt')" title="Export TXT" style="width:auto; padding:0 8px; font-size:0.75rem;">TXT</button>
+            <button class="icon-btn" onclick="exportHistory('csv')" title="Export CSV" style="width:auto; padding:0 8px; font-size:0.75rem;">CSV</button>
+            <button class="icon-btn" onclick="exportHistory('pdf')" title="Print PDF" style="width:auto; padding:0 8px; font-size:0.75rem;">PDF</button>
+            <button class="icon-btn" onclick="clearHistory()" title="Clear History" style="width:auto; padding:0 8px; font-size:0.75rem; color:#f472b6;">Clear</button>
+          </div>
         </div>
         <div class="history-list" id="historyList">
-          <div class="empty-history">No history yet</div>
+          <div class="empty-history">No history calculations yet</div>
+        </div>
+      </div>
+
+      <!-- GLASS SETTINGS PANEL -->
+      <div class="settings-panel hidden" id="settingsMode">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-title">Audio Sound Feedback</span>
+            <span class="setting-desc">Play synthesized keypress audio click</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="soundToggle" onchange="toggleSoundSetting(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-title">High Contrast Mode</span>
+            <span class="setting-desc">Enhance border and text readability</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="contrastToggle" onchange="toggleContrastSetting(this.checked)">
+            <span class="slider"></span>
+          </label>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Toast Feedback Banner -->
+  <!-- RAYCAST COMMAND PALETTE MODAL (Ctrl + K) -->
+  <div class="palette-overlay" id="commandPalette" onclick="if(event.target===this) toggleCommandPalette()">
+    <div class="palette-card">
+      <div class="palette-input-wrapper">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="palette-input" id="paletteSearch" placeholder="Type a command or mode..." oninput="filterPaletteCommands()">
+      </div>
+      <div class="palette-list" id="paletteList">
+        <!-- Dynamic Commands rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass Toast Notification -->
   <div class="glass-toast" id="toast">Copied to clipboard!</div>
 
   <script src="script.js"></script>
