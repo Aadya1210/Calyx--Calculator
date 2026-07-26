@@ -24,21 +24,21 @@ Designed as a portfolio-quality frontend project, CALYX demonstrates responsive 
 
 # 🚀 Features
 
-- ✨ VisionOS-inspired Glassmorphism UI
-- 🧮 Basic Calculator
-- 📐 Scientific Calculator
-- 📈 Interactive Graph Mode
-- 📏 Unit Converter
-- 💱 Currency Converter
-- 🤖 AI Math Assistant
-- 📝 Calculation History
-- 🎨 Multiple Themes
-- 🎙️ Voice Input
-- ⌨️ Keyboard Shortcuts
-- ⚡ Smooth Animations
-- 📱 Responsive Design
-- 🌙 Dark Theme
-- 🖥️ Desktop-like Experience
+- VisionOS-inspired Glassmorphism UI
+- Basic Calculator
+- Scientific Calculator
+- Interactive Graph Mode
+- Unit Converter
+- Currency Converter
+- AI Math Assistant
+- Calculation History
+- Multiple Themes
+- Voice Input
+- Keyboard Shortcuts
+- Smooth Animations
+- Responsive Design
+- Dark Theme
+- Desktop-like Experience
 
 ---
 
@@ -111,7 +111,7 @@ Run using Live Server or any static server.
 
 # 🌍 Live Website
 
-👉 https://calyx-ten.vercel.app/
+https://calyx-ten.vercel.app/
 
 ---
 
@@ -147,6 +147,6 @@ GitHub: https://github.com/Aadya1210
 
 ### ⭐ If you enjoyed this project, consider giving it a star!
 
-Made with ❤️ by **AADYA SRIVASTAVA**
+
 
 </div>
