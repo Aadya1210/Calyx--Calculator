@@ -151,7 +151,7 @@ This project is licensed under the MIT License.
 
 # 👩‍💻 Author
 
-**AADYA SRIVASTAVA**
+**Aadya Srivastava**
 
 GitHub: https://github.com/Aadya1210
 
