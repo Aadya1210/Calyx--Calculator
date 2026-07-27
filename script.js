@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
   updateConverterUnits();
   convertCurrency();
   setupKeyboardSupport();
-  setupMouseParallax();
   setupPWA();
+  restoreCalcState();
 
   // Settings Toggles Setup
   const soundToggle = document.getElementById("soundToggle");
@@ -157,34 +157,26 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// ==========================================================================
-// 3. 3D Mouse Parallax & Dynamic Light Source (40% Reduced Tilt ~2.5°)
-// ==========================================================================
+// Scientific Constants Handler
+function insertConstant(name) {
+  playKeySound();
+  const constants = {
+    c: "299792458",
+    h: "6.62607015e-34",
+    G: "6.67430e-11",
+    N_A: "6.02214076e23",
+    phi: "1.6180339887"
+  };
+  const val = constants[name];
+  if (!val) return;
 
-function setupMouseParallax() {
-  document.addEventListener("mousemove", (e) => {
-    if (!glassCard) return;
-
-    const rect = glassCard.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const tiltX = ((y - centerY) / centerY) * -2.5; // Damped ~2.5° spatial tilt
-    const tiltY = ((x - centerX) / centerX) * 2.5;
-
-    document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-    document.documentElement.style.setProperty("--mouse-y", `${y}px`);
-    document.documentElement.style.setProperty("--tilt-x", `${tiltX}deg`);
-    document.documentElement.style.setProperty("--tilt-y", `${tiltY}deg`);
-  });
-
-  document.addEventListener("mouseleave", () => {
-    document.documentElement.style.setProperty("--tilt-x", `0deg`);
-    document.documentElement.style.setProperty("--tilt-y", `0deg`);
-  });
+  if (currentInput === "0" || isNewCalculation) {
+    currentInput = val;
+    isNewCalculation = false;
+  } else {
+    currentInput += val;
+  }
+  updateDisplay();
 }
 
 // ==========================================================================
@@ -301,9 +293,29 @@ function backspace() {
   updateDisplay();
 }
 
+function saveCalcState() {
+  localStorage.setItem("calyx_last_calc", JSON.stringify({
+    input: currentInput,
+    prevExpr: prevExpressionEl ? prevExpressionEl.innerText : ""
+  }));
+}
+
+function restoreCalcState() {
+  const saved = localStorage.getItem("calyx_last_calc");
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      if (data.input) currentInput = data.input;
+      if (data.prevExpr && prevExpressionEl) prevExpressionEl.innerText = data.prevExpr;
+      updateDisplay();
+    } catch(e) {}
+  }
+}
+
 function updateDisplay() {
   displayEl.value = currentInput;
   updateLivePreview();
+  saveCalcState();
 }
 
 function updateLivePreview() {

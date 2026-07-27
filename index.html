@@ -13,20 +13,15 @@
 </head>
 <body>
 
-  <!-- macOS Wallpaper Ambient Glowing Blobs -->
-  <div class="ambient-container">
-    <div class="ambient-blob blob-1"></div>
-    <div class="ambient-blob blob-2"></div>
-    <div class="ambient-blob blob-3"></div>
-    <div class="ambient-blob blob-4"></div>
+  <!-- Minimal Apple VisionOS Ambient Background -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
   </div>
 
   <!-- Calculator Application Container -->
   <div class="calculator-app" id="app">
     <div class="glass-card" id="glassCard">
-
-      <!-- Idle Glass Glare Shimmer Layer -->
-      <div class="glass-shimmer"></div>
 
       <!-- CALYX Header & Actions -->
       <div class="header">
@@ -174,6 +169,15 @@
 
       <!-- SCIENTIFIC MODE KEYBOARD GRID -->
       <div class="buttons-grid scientific-grid hidden" id="scientificMode">
+        <!-- Scientific Constants Row -->
+        <div class="constants-row">
+          <button class="btn-const" onclick="insertConstant('c')" title="Speed of Light (299,792,458 m/s)">c</button>
+          <button class="btn-const" onclick="insertConstant('h')" title="Planck's Constant (6.626e-34 J·s)">h</button>
+          <button class="btn-const" onclick="insertConstant('G')" title="Gravitational Constant (6.674e-11 N·m²/kg²)">G</button>
+          <button class="btn-const" onclick="insertConstant('N_A')" title="Avogadro's Constant (6.022e23 mol⁻¹)">Nₐ</button>
+          <button class="btn-const" onclick="insertConstant('phi')" title="Golden Ratio (1.6180339887)">Φ</button>
+        </div>
+
         <button class="btn btn-func" onclick="press('sin(')">sin</button>
         <button class="btn btn-func" onclick="press('cos(')">cos</button>
         <button class="btn btn-func" onclick="press('tan(')">tan</button>
